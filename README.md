@@ -12,7 +12,7 @@ The combination of VDXF, VerusIDs and external storage systems that support tagg
 
 The purpose of this repository is to propose systematically defined URIs that support the ability of applications to define and represent specific types of data for applications.
 
-There are generally three types of naming schemes, which correpond to the way in which data is stored and retrieved.
+There are generally three types of naming schemes, which correspond to the way in which data is stored and retrieved.
 
 Account-Based Storage - in these, contentmaps will point to storage accounts that may or may not be controlled by the VerusID that is pointing to the account.  Globally unique tags will be searched within the account in order to retrieve the bound data.
 
