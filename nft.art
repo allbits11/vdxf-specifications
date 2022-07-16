@@ -26,13 +26,29 @@ vrsc::system.nft.art.root
 ### Required Contents of the Root element
 
 {
-    "<globally unique identifier when hashed with ID>" : {
+    "<globally unique identifier when hashed with ID>": {
       “status”: “<active or deleted>”
     }
 }
 
-### Apps shall begin by retreiving the most recent storage transaction that contains the Root Element
+### Optional Contents of the Root element
+
+--- Any modular element (described below) may be optionally included as a json element within the Root element rather than being uploaded and tagged separately as a modular element
+
+### Apps shall begin by retrieving the most recent storage transaction that contains the Root Element
 ### If the status in this element is "deleted", no data is returned and the retrieval operation is ended
 ### If the status in this element is "active", the rest of the element is considered, as are all of the other grouped and sorted elements as described below
 
+### Tags and Content for each Modular Element
 
+### The image element
+
+vrsc::system.art.nft.image
+
+### The image may be returned directly by the transaction, or may be a json element providing a URL for the image
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "image":"url"
+    }
+}
