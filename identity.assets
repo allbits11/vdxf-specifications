@@ -46,7 +46,7 @@ vrsc::identity.assets.root
 
 ### Tags and Content for each Modular Element
 
-### The Label element (optional) - provides a label desired by the user to give context and meaning to the Assets
+### The Label element (optional) - provides a label desired by the user to categorize or give context and meaning to the Assets
 
 vrsc::identity.assets.label
 
@@ -58,7 +58,7 @@ vrsc::identity.assets.label
     }
 }
 
-### The Content Element
+### The Content Element (required)
 ### The content may be a media or other file returned directly by the transaction, or may be a json element providing URLs for the content
 ### A content json may provide an arbitrary number of URLs within the element, which taken together form the content of the Assets
 
@@ -70,4 +70,55 @@ vrsc::identity.assets.label
     }
 }
 
-### 
+### The Description Element (optional)
+### The description may be a markdown or other file returned directly by the transaction, or may be a json element providing URLs for the description
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "status": "<deleted>"
+      -OR-
+      "description":"url",
+      "description":"url",
+      ...
+    }
+}
+
+### The Licenses Element (optional)
+### The licenses may be a pdf or other file returned directly by the transaction, or may be a json element providing URLs for the licenses
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "status": "<deleted>"
+      -OR-
+      "license":"url",
+      "license":"url",
+      ...
+      "signature":
+    }
+}
+
+### The Deed Element (optional)
+### The deed or title certificate may be a pdf or other file returned directly by the transaction, or may be a json element providing URLs for the deed
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "status": "<deleted>"
+      -OR-
+      "deed":"url",
+      "deed":"url",
+      ...
+    }
+}
+
+### The Signatures Element (optional)
+### The signatures appear in a json element that reference signatories, data signed, and the signatures
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "status": "<deleted>"
+      -OR-
+      "deed":"url",
+      "deed":"url",
+      ...
+    }
+}
