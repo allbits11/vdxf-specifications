@@ -1,32 +1,33 @@
-### This is a specification for general VDXF keys to be used to define and represent assets that are bound to a VerusID
-### Assets can be digital art, NFTs, deeds representing ownership of physical assets, collectibles, in-game items, tickets, coupons, etc etc
+### This is a specification for general VDXF keys to be used to define and represent assets ("Assets") that are bound to a VerusID
+### Assets can be digital art, NFTs, deeds representing ownership of physical assets, contracts, collectibles, in-game items, tickets, coupons, etc etc
+### Assets may consist of various data elements
 
 ### These are *general* URIs
-### In implementation these general URIs should be hashed together with a VerusID (using the getvdfxid api) to obtain globally unique identifiers for each element
+### In implementation, these general URIs should be hashed together with a VerusID (using the getvdfxid api) to obtain globally unique identifiers for each data element
 
 ### In implementation, globally unique tags that are generated shall be used as a --tag-name on each data element uploaded to a storage account
-### The applicable storage account shall be referenced in the contentmap of the VerusID that controls the NFT digital art
+### The applicable storage account shall be referenced in the contentmap of the VerusID that controls the Assets
 
-### Data elements that make up the NFT object may be uploaded to data storage modularly
-### All uploaded data elements should be tagged with the *Fundamental Tag*
-### The "root" data element should be tagged with the Fundamental Tag plus a tag indicating that this is the root element
-### Modular elements of the object not contained in the root element should also be tagged with a Modular Element Tag
+### Data elements that make up the Assets may be uploaded to data storage modularly
+### All uploaded data elements must be tagged with the Fundamental Tag
+### The "root" data element should be tagged with the Fundamental Tag plus the Root Element Tag
+### Modular elements not contained in the root element should also be tagged with a Modular Element Tag
 
-### Apps that retrieve and render NFT digital art on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID holds its collections of data
+### Apps that retrieve and render Assets on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID holds its collections of data
 ### The app may then generate the globally unique identifier corresponding to the Fundamental Tag when hashed together with the VerusID
 ### The app may then query the storage account for all data elements that contain the Fundamental Tag
 
-### A VerusID may control an unlimited number of NFTs????
+### Elements are tagged with a --tag-name equal to the the globally unique identifier, and a --tag-value equal to a version number, currently "1"
 
-### The Fundamental Tag
+### Fundamental Tag - to be included in all data elements that are to be included in the Assets
 
-vrsc::system.nft.art
+vrsc::identity.assets
 
-### Tag Indicating Root Element
+### Root Element Tag
 
-vrsc::system.nft.art.root
+vrsc::identity.assets.root
 
-### Required Contents of the Root element
+### Required Contents of the Root element - the root element is a json object typically styled as assets.json
 
 {
     "<globally unique identifier when hashed with ID>": {
@@ -35,8 +36,9 @@ vrsc::system.nft.art.root
 }
 
 ### Optional Contents of the Root element
-
---- Any modular element (described below) may be optionally included as a json element within the Root element rather than being uploaded and tagged separately as a modular element
+### Any modular element (described below) may be optionally included as a json element within the Root element rather than being uploaded and tagged separately as a modular element
+### Best practice is upload and tag separately to provide for more efficient updates
+### Where there is a separately uploaded element that also exists within the root element, the valid element is considered to be the most recently uploaded transaction
 
 ### Apps shall begin by retrieving the most recent storage transaction that contains the Root Element
 ### If the status in this element is "deleted", no data is returned and the retrieval operation is ended
@@ -44,14 +46,28 @@ vrsc::system.nft.art.root
 
 ### Tags and Content for each Modular Element
 
-### The image element
+### The Label element (optional) - provides a label desired by the user to give context and meaning to the Assets
 
-vrsc::system.art.nft.image
-
-### The image may be returned directly by the transaction, or may be a json element providing a URL for the image
+vrsc::identity.assets.label
 
 {
     "<globally unique identifier when hashed with ID>":  {
-      "image":"url"
+      "status": "<deleted>"
+      -OR-
+      "label":"<any arbitrary user defined label such as 'NFT'>"
     }
 }
+
+### The Content Element
+### The content may be a media or other file returned directly by the transaction, or may be a json element providing URLs for the content
+### A content json may provide an arbitrary number of URLs within the element, which taken together form the content of the Assets
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "content":"url",
+      "content":"url",
+      ...
+    }
+}
+
+### 
