@@ -15,6 +15,8 @@
 ### The app may then generate the globally unique identifier corresponding to the Fundamental Tag when hashed together with the VerusID
 ### The app may then query the storage account for all data elements that contain the Fundamental Tag
 
+### A VerusID may control an unlimited number of NFTs????
+
 ### The Fundamental Tag
 
 vrsc::system.nft.art
