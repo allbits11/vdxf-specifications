@@ -11,7 +11,7 @@
 ### The "root" data element should be tagged with the Fundamental Tag plus a tag indicating that this is the root element
 ### Modular elements of the object not contained in the root element should also be tagged with a Modular Element Tag
 
-### Apps that retrieve and render NFT digital art on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID hold its collections of data
+### Apps that retrieve and render NFT digital art on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID holds its collections of data
 ### The app may then generate the globally unique identifier corresponding to the Fundamental Tag when hashed together with the VerusID
 ### The app may then query the storage account for all data elements that contain the Fundamental Tag
 
