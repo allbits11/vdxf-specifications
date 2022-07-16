@@ -8,18 +8,22 @@
 
 ### Data elements that make up the NFT object may be uploaded to data storage modularly
 ### All uploaded data elements should be tagged with the *Fundamental Tag*
-### The "root" data element should be tagged *only* with the Fundamental Tag
+### The "root" data element should be tagged with the Fundamental Tag plus a tag indicating that this is the root element
 ### Modular elements of the object not contained in the root element should also be tagged with a Modular Element Tag
 
 ### Apps that retrieve and render NFT digital art on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID hold its collections of data
 ### The app may then generate the globally unique identifier corresponding to the Fundamental Tag when hashed together with the VerusID
-### The app may then query the storage account for data elements that contain the *fundamenta
+### The app may then query the storage account for all data elements that contain the Fundamental Tag
 
 ### The Fundamental Tag
 
 vrsc::system.nft.art
 
-### Required Contents of the Fundamental Tag element
+### Tag Indicating Root Element
+
+vrsc::system.nft.art.root
+
+### Required Contents of the Root element
 
 {
     "<globally unique identifier when hashed with ID>" : {
@@ -27,4 +31,8 @@ vrsc::system.nft.art
     }
 }
 
-### Apps shall begin by retreiving the most recent storage transaction that contains only the fundamental tag
+### Apps shall begin by retreiving the most recent storage transaction that contains the Root Element
+### If the status in this element is "deleted", no data is returned and the retrieval operation is ended
+### If the status in this element is "active", the rest of the element is considered, as are all of the other grouped and sorted elements as described below
+
+
