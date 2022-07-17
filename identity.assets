@@ -11,7 +11,7 @@
 ### Data elements that make up the Assets may be uploaded to data storage modularly
 ### All uploaded data elements must be tagged with the Fundamental Tag
 ### The "root" data element should be tagged with the Fundamental Tag plus the Root Element Tag
-### Modular elements not contained in the root element should also be tagged with a Modular Element Tag
+### Modular elements not contained in the root element should be tagged with the Fundamental Tag and a Modular Element Tag
 
 ### Apps that retrieve and render Assets on behalf of a VerusID may consult the contentmap to locate a storage account where such VerusID holds its collections of data
 ### The app may then generate the globally unique identifier corresponding to the Fundamental Tag when hashed together with the VerusID
@@ -37,7 +37,7 @@ vrsc::identity.assets.root
 
 ### Optional Contents of the Root element
 ### Any modular element (described below) may be optionally included as a json element within the Root element rather than being uploaded and tagged separately as a modular element
-### Best practice is upload and tag separately to provide for more efficient updates
+### Best practice is to upload and tag separately to provide for more efficient updates
 ### Where there is a separately uploaded element that also exists within the root element, the valid element is considered to be the most recently uploaded transaction
 
 ### Apps shall begin by retrieving the most recent storage transaction that contains the Root Element
@@ -46,9 +46,10 @@ vrsc::identity.assets.root
 
 ### Tags and Content for each Modular Element
 
-### The Label element (optional) - provides a label desired by the user to categorize or give context and meaning to the Assets
+### The MetaLabel element (optional) - provides a metalabel desired by the user to categorize or give context and meaning to the Assets
+### This information is not intended to be displayed but is to guide apps as to what type of Assets these are
 
-vrsc::identity.assets.label
+vrsc::identity.assets.metalabel
 
 {
     "<globally unique identifier when hashed with ID>":  {
@@ -57,6 +58,18 @@ vrsc::identity.assets.label
       "label":"<any arbitrary user defined label such as 'NFT'>"
     }
 }
+
+### The Provenance Element (required)
+
+vrsc::identity.assets.provenance
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "minter": "<VerusID representing the creator/minter of the Assets>",
+      "owner": "<VerusID representing the owner of the Assets>"
+      "collection":"<globally unique identifier of any collection >"
+    }
+}
+
 
 ### The Content Element (required)
 ### The content may be a media or other file returned directly by the transaction, or may be a json element providing URLs for the content
@@ -121,4 +134,14 @@ vrsc::identity.assets.label
 ### The Lock Element (optional)
 ### The lock element when activated means that any future purported updates to the Assets are invalid unless a subsequent valid unlock element has been created
 
+vrsc::identity.assets.lock
 
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "status": "locked"
+    }
+}
+
+### The Unlock Element (optional)
+### If present and valid, then subsequent transactions updating the Assets are to be processed by Apps
+### A valid Unlock requires the
