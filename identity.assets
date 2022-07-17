@@ -118,3 +118,7 @@ vrsc::identity.assets.label
     }
 }
 
+### The Lock Element (optional)
+### The lock element when activated means that any future purported updates to the Assets are invalid unless a subsequent valid unlock element has been created
+
+
