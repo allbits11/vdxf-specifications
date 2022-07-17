@@ -1,5 +1,5 @@
 ### This is a specification for general VDXF keys to be used to define and represent assets ("Assets") that are bound to a VerusID
-### Assets can be digital art, NFTs, deeds representing ownership of physical assets, contracts, collectibles, in-game items, tickets, coupons, etc etc
+### Assets can be digital art, NFTs, deeds representing ownership of physical assets, contracts, collectibles, in-game items, tickets, coupons, any combination of these, etc etc
 ### Assets may consist of various data elements
 
 ### These are *general* URIs
@@ -77,6 +77,7 @@ vrsc::identity.assets.label
     "<globally unique identifier when hashed with ID>":  {
       "status": "<deleted>"
       -OR-
+      "title":"<optional, a heading or title by which the content is known>",
       "description":"url",
       "description":"url",
       ...
@@ -93,7 +94,10 @@ vrsc::identity.assets.label
       "license":"url",
       "license":"url",
       ...
-      "signature":
+      "signatures": {
+        "object": "<url of material being signed>",
+        "signer": "<verusID | description of signatory | url of signatory>",
+        "signature": "<url of signature | crytpographic signature>"
     }
 }
 
@@ -107,18 +111,10 @@ vrsc::identity.assets.label
       "deed":"url",
       "deed":"url",
       ...
+      "signatures": {
+        "object": "<url of material being signed>",
+        "signer": "<verusID | description of signatory | url of signatory>",
+        "signature": "<url of signature | crytpographic signature>"
     }
 }
 
-### The Signatures Element (optional)
-### The signatures appear in a json element that reference signatories, data signed, and the signatures
-
-{
-    "<globally unique identifier when hashed with ID>":  {
-      "status": "<deleted>"
-      -OR-
-      "deed":"url",
-      "deed":"url",
-      ...
-    }
-}
