@@ -4,7 +4,7 @@ This repository specifies naming schemes for general VDXF keys to be used to tag
 
 VDXF keys are collison-free 20 byte identifiers that correspond to arbitrary URIs.  Systematically defined URIs, such as those specified in this repository, may be used by applications to define and represent any desired data, such as digital art, licenses, legal contracts, social media profiles, social media posts, accreditations, messaging systems, hierarchical naming systems, or anything else.
 
-VerusIDs are friendly-name namespaces that are uniquely registered on the Verus blockchain network.  These namespaces may also be represented by, and correspond to, i-addresses that are globally unique public keys that can be controlled cryptographically using private keys.  The VerusID system provides the ability for users to have permissionless, self-sovereign control of a namespace, including the ability to provide verifiable signatures confirming control over the namespace at any specific point in time.
+VerusIDs are friendly-name namespaces that are uniquely registered on the Verus blockchain network.  These namespaces may also be represented by, and correspond to, i-addresses that are globally unique 20 byte public keys that can be controlled cryptographically using private keys.  The VerusID system provides the ability for users to have permissionless, self-sovereign control of a namespace, including the ability to provide verifiable signatures confirming control over the namespace at any specific point in time.
 
 VerusIDs also contain attached contentmaps which are arbitary key/value stores that can be used to point to arbitrary URIs including to data storage accounts or locations.
 
