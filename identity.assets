@@ -47,7 +47,7 @@ vrsc::identity.assets.root
 ### Tags and Content for each Modular Element
 
 ### The MetaLabel element (optional) - provides a metalabel desired by the user to categorize or give context and meaning to the Assets
-### This information is not intended to be displayed but is to guide apps as to what type of Assets these are
+### This information is not intended to be displayed but is to guide apps as to what type of Assets are represented if that might be helpful for display purposes
 
 vrsc::identity.assets.metalabel
 
@@ -64,9 +64,9 @@ vrsc::identity.assets.metalabel
 vrsc::identity.assets.provenance
 {
     "<globally unique identifier when hashed with ID>":  {
-      "minter": "<VerusID representing the creator/minter of the Assets>",
+      "creator": "<VerusID representing the creator/minter of the Assets>",
       "owner": "<VerusID representing the owner of the Assets>"
-      "collection":"<globally unique identifier of any collection >"
+   ####   "collection":"<globally unique identifier of any collection>"
     }
 }
 
@@ -130,6 +130,14 @@ vrsc::identity.assets.provenance
         "signature": "<url of signature | crytpographic signature>"
     }
 }
+
+### The Properties Element (optional)
+### The properties element permits the attachment of properties/traits
+
+### levels/stats/boosts
+
+### locked content
+
 
 ### The Lock Element (optional)
 ### The lock element when activated means that any future purported updates to the Assets are invalid unless a subsequent valid unlock element has been created
