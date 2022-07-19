@@ -3,7 +3,7 @@
 ### This VDXF key defines only the Collection and does not define any Assets.
 
 ### This is a *general* URI
-### In implementation, this general URI should be hashed together with the VerusID controlling the Collection (using the getvdfxid api)to obtain a globally unique identifier for the Collection
+### In implementation, this general URI should be hashed together with the VerusID controlling the Collection (using the getvdfxid api) to obtain a globally unique identifier for the Collection
 
 ### In implementation, the globally unique tag that is generated shall be used as a --tag-name on the Collection definition uploaded to a storage account
 ### The applicable storage account shall be referenced in the contentmap of the VerusID that controls the Collection
