@@ -1,0 +1,24 @@
+### This is a specification for a general VDXF key to be used to define asset collections ("Collections")
+### Collections form a limited or unlimited set of otherwise unique Assets (see "identity.assets")
+### This VDXF key defines only the Collection and does not define any Assets.
+
+## This is a *general* URI
+### In implementation, this general URI should be hashed together with the VerusID controlling the Collection (using the getvdfxid api)to obtain a globally unique identifier for the Collection
+
+### In implementation, the globally unique tag that is generated shall be used as a --tag-name on the Collection definition uploaded to a storage account
+### The applicable storage account shall be referenced in the contentmap of the VerusID that controls the Collection
+
+### A Collection may only be defined once and a VerusID may only control one Collection.  Apps searching for the globally unique identifier should select the first such tagged transaction in the storage account, and shall consider invalid  any subsquent similarly tagged transactions
+
+verus.identity.assetcollectiondefinition
+
+{
+    "<globally unique identifier when hashed with ID>":  {
+      "title":"<a heading or title by which the Collection is known>",
+      "creator":"<the VerusID which creates and controls this Collection>",
+      "creatorsig":"<signature of a message saying 'Collection Definition'>",
+      "description":"url",
+      "description":"url",
+      ...
+    }
+}
